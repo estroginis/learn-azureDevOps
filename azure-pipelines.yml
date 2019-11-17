@@ -76,9 +76,9 @@ stages:
            displayName: 'Azure App Service Deploy'
            inputs:
              ConnectionType: 'AzureRM'
-             azureSubscription: 'Arana Software (b8ba1017-db20-40ed-bf4b-ed8d50d50175)'
+             azureSubscription: 'Microsoft Partner Network (f40f67fa-cb9f-4a92-bc09-637bd6380104)'
              appType: 'webApp'
-             WebAppName: 'workshop-dev'
+             WebAppName: 'TestEdgaras'
              packageForLinux: '$(Pipeline.Workspace)/webApp/learn-azuredevops.zip'
 - stage: ProdDeployStage
   displayName: 'Production Deployment'
@@ -95,7 +95,7 @@ stages:
            displayName: 'Azure App Service Deploy'
            inputs:
              ConnectionType: 'AzureRM'
-             azureSubscription: 'Arana Software (b8ba1017-db20-40ed-bf4b-ed8d50d50175)'
+             azureSubscription: 'Microsoft Partner Network (f40f67fa-cb9f-4a92-bc09-637bd6380104)'
              appType: 'webApp'
-             WebAppName: 'workshop-prod'
+             WebAppName: 'ProdEdgaras'
              packageForLinux: '$(Pipeline.Workspace)/webApp/learn-azuredevops.zip'
