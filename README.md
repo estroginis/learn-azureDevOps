@@ -1,4 +1,4 @@
-# Azure DevOps Workshop - Edgaras Fork
+# Azure DevOps Workshop - Production deployment
 
 [![Build status](https://dev.azure.com/edgstr/Workshop/_apis/build/status/Classic%20Pipeline)](https://dev.azure.com/edgstr/Workshop/_build/latest?definitionId=1)
 
