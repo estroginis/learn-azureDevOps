@@ -66,8 +66,7 @@ stages:
   jobs:
   - deployment: Deploy
     displayName: 'Deployment'
-    environment:
-     name: "azureDevOpsWorkshop-dev"
+    environment: "azureDevOpsWorkshop-dev"
     strategy:
      runOnce:
        deploy:
@@ -78,4 +77,4 @@ stages:
               azureSubscription: 'Microsoft Partner Network (f40f67fa-cb9f-4a92-bc09-637bd6380104)'
               appType: 'webApp'
               WebAppName: 'TestEdgaras'
-              packageForLinux: '$(Pipeline.Workspace)/webApp/learn-azuredevops.zip'
+              packageForLinux: '$(Pipeline.Workspace)/**/*.zip'
