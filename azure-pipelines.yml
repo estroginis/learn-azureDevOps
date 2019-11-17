@@ -84,7 +84,7 @@ stages:
              azureSubscription: 'Microsoft Partner Network (f40f67fa-cb9f-4a92-bc09-637bd6380104)'
              appType: 'webApp'
              WebAppName: 'TestEdgaras'
-             packageForLinux: '$(Pipeline.Workspace)/webApp/learn-azuredevops.zip'
+             packageForLinux: '$(Pipeline.Workspace)/webApp/a/learn-azuredevops.zip'
 - stage: ProdDeployStage
   displayName: 'Production Deployment'
   condition: "and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/master'))"
@@ -103,4 +103,4 @@ stages:
              azureSubscription: 'Microsoft Partner Network (f40f67fa-cb9f-4a92-bc09-637bd6380104)'
              appType: 'webApp'
              WebAppName: 'ProdEdgaras'
-             packageForLinux: '$(Pipeline.Workspace)/webApp/learn-azuredevops.zip'
+             packageForLinux: '$(Pipeline.Workspace)/webApp/a/learn-azuredevops.zip'
