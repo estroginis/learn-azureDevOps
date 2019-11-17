@@ -1,4 +1,4 @@
-# Azure DevOps Workshop - Edgaras Fork
+# Azure DevOps Workshop - Edgaras Branch
 
 ## Prerequisites
 
