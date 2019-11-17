@@ -10,7 +10,7 @@ trigger:
     - "*"
 
 pr:
- branches:
+  branches:
    include:
      - "*"
 
@@ -19,14 +19,14 @@ schedules:
   always: true
   branches:
     include:
-      - "master"
+    - "master"
   displayName: "1am EET UTC+2"
 
 pool:
   vmImage: 'ubuntu-latest'
 
 stages:
-- stage: BuildJob
+- stage: BuildStage
   displayName: 'Build Stage'
   jobs:
   - job: BuildJob
@@ -62,19 +62,40 @@ stages:
         ArtifactName: 'webApp'
         publishLocation: 'Container'
 - stage: TestDeployStage
+  condition: "and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/master'))"
   displayName: 'Test Deployment'
   jobs:
   - deployment: Deploy
     displayName: 'Deployment'
-    environment: "azureDevOpsWorkshop-dev"
+    environment: 'azureDevOpsWorkshop-dev'
     strategy:
      runOnce:
        deploy:
-        steps:
-          - task: AzureRmWebAppDeployment@4
-            inputs:
-              ConnectionType: 'AzureRM'
-              azureSubscription: 'Microsoft Partner Network (f40f67fa-cb9f-4a92-bc09-637bd6380104)'
-              appType: 'webApp'
-              WebAppName: 'TestEdgaras'
-              packageForLinux: '$(Pipeline.Workspace)/webApp/learn-azuredevops.zip'
+         steps:
+         - task: AzureRmWebAppDeployment@4
+           displayName: 'Azure App Service Deploy'
+           inputs:
+             ConnectionType: 'AzureRM'
+             azureSubscription: 'Arana Software (b8ba1017-db20-40ed-bf4b-ed8d50d50175)'
+             appType: 'webApp'
+             WebAppName: 'workshop-dev'
+             packageForLinux: '$(Pipeline.Workspace)/webApp/learn-azuredevops.zip'
+- stage: ProdDeployStage
+  displayName: 'Production Deployment'
+  condition: "and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/master'))"
+  jobs:
+  - deployment: Deploy
+    displayName: 'Deployment'
+    environment: 'azureDevOpsWorkshop-prod'
+    strategy:
+     runOnce:
+       deploy:
+         steps:
+         - task: AzureRmWebAppDeployment@4
+           displayName: 'Azure App Service Deploy'
+           inputs:
+             ConnectionType: 'AzureRM'
+             azureSubscription: 'Arana Software (b8ba1017-db20-40ed-bf4b-ed8d50d50175)'
+             appType: 'webApp'
+             WebAppName: 'workshop-prod'
+             packageForLinux: '$(Pipeline.Workspace)/webApp/learn-azuredevops.zip'
