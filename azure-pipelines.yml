@@ -77,4 +77,4 @@ stages:
               azureSubscription: 'Microsoft Partner Network (f40f67fa-cb9f-4a92-bc09-637bd6380104)'
               appType: 'webApp'
               WebAppName: 'TestEdgaras'
-              packageForLinux: '$(Pipeline.Workspace)/**/*.zip'
+              packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
