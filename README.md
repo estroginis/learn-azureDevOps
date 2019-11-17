@@ -1,5 +1,7 @@
 # Azure DevOps Workshop - Edgaras Fork
 
+[![Build status](https://dev.azure.com/edgstr/Workshop/_apis/build/status/Classic%20Pipeline)](https://dev.azure.com/edgstr/Workshop/_build/latest?definitionId=1)
+
 ## Prerequisites
 
 ### Git & GitHub Account
