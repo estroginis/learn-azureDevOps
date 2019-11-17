@@ -61,6 +61,11 @@ stages:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'webApp'
         publishLocation: 'Container'
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Pipeline.Workspace)'
+        artifact: 'webApp'
+        publishLocation: 'pipeline'
 - stage: TestDeployStage
   condition: "and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/master'))"
   displayName: 'Test Deployment'
