@@ -14,13 +14,13 @@ pr:
    include:
      - "*"
 
-schedules:
-- cron: 0 23 * * *
-  always: true
-  branches:
-    include:
-    - "master"
-  displayName: "1am EET UTC+2"
+#schedules:
+#- cron: 0 23 * * *
+#  always: true
+#  branches:
+#    include:
+#    - "master"
+#  displayName: "1am EET UTC+2"
 
 pool:
   vmImage: 'ubuntu-latest'
